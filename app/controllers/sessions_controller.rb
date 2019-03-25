@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
 
     def create
         @user = User.find_by(dj_name: params[:dj_name])
-        byebug
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
             redirect_to playlists_path(@user)

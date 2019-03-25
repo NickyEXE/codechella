@@ -12,5 +12,8 @@ class Playlist < ApplicationRecord
     self.original_author.dj_name
   end
 
+  def does_user_follow?(current_user)
+    !!self.follows.find_by(user_id: current_user.id)
+  end
 
 end

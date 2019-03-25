@@ -2,6 +2,8 @@
   <h1><%= @playlist.name %></h1>
 </p>
 
+  <h2> Does the user follow me? <%= @playlist.does_user_follow?(current_user) %></h2>
+
 <p>
   <strong>Description:</strong>
   <%= @playlist.description %>
