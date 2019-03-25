@@ -3,7 +3,6 @@ class Follow < ApplicationRecord
   belongs_to :playlist
 
 
-  
 
 
 end
