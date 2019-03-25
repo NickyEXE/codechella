@@ -15,11 +15,15 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists/new
   def new
+    @users = User.all
     @playlist = Playlist.new
+    render :new
   end
 
   # GET /playlists/1/edit
   def edit
+
+    render :edit
   end
 
   # POST /playlists
@@ -41,14 +45,11 @@ class PlaylistsController < ApplicationController
   # PATCH/PUT /playlists/1
   # PATCH/PUT /playlists/1.json
   def update
-    respond_to do |format|
-      if @playlist.update(playlist_params)
-        format.html { redirect_to @playlist, notice: 'Playlist was successfully updated.' }
-        format.json { render :show, status: :ok, location: @playlist }
-      else
-        format.html { render :edit }
-        format.json { render json: @playlist.errors, status: :unprocessable_entity }
-      end
+    if @playlist.update(playlist_params)
+      redirect_to @playlist
+    else
+      @errors = @playlist.errors.full_messages
+      render :edit
     end
   end
 
