@@ -14,6 +14,7 @@ class SongsController < ApplicationController
 
   # GET /songs/new
   def new
+    byebug
     @song = Song.new
   end
 

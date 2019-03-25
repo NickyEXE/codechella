@@ -44,5 +44,6 @@
 
 <% end %>
 
-<%= link_to 'Edit', edit_playlist_path(@playlist) %> |
+<%= link_to 'Add Song to Playlist', new_song_path(playlist_id: @playlist.id) %> |
+<%= link_to 'Edit Playlist Properties', edit_playlist_path(@playlist) %> |
 <%= link_to 'Back', playlists_path %>
