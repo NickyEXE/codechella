@@ -9,6 +9,12 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists/1
   # GET /playlists/1.json
+
+  def find_new_playlists
+    @playlists = Playlist.all
+    render :find_new_playlists
+  end
+
   def show
     @songs = @playlist.songs
   end

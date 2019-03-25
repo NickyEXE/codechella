@@ -12,4 +12,5 @@ class Playlist < ApplicationRecord
     self.original_author.dj_name
   end
 
+
 end

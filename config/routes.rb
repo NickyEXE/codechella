@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/playlists/find_new_playlists', to: 'playlists#find_new_playlists', as: 'find_new_playlists'
+
   get '/playlists/:pid/songs/:sid/edit', to: 'songs#edit', as: 'edit_song'
   patch '/playlists/:pid/songs/:sid', to: 'songs#update'
   delete '/playlists/:pid/songs/:sid/destroy', to: 'songs#destroy', as: 'destroy_song'
