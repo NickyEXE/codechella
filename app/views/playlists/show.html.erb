@@ -1,6 +1,5 @@
 <p>
-  <h1><strong>Name:</strong>
-  <%= @playlist.name %></h1>
+  <h1><%= @playlist.name %></h1>
 </p>
 
 <p>
@@ -10,30 +9,27 @@
 
 <p>
   <strong>Author:</strong>
-  <%= @user %>
+  <%= @playlist.original_author_dj_name %>
 </p>
 
+<% if @songs.length > 0 %>
 
 <h2>Songs</h2>
 
 <table>
   <thead>
     <tr>
+      <th>Name</th>
       <th>Artist</th>
-      <th>Genre</th>
-      <th>Lyrics</th>
-      <th>Year</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @songs.each do |song| %>
       <tr>
+        <td><%= song.name %></td>
         <td><%= song.artist %></td>
-        <td><%= song.genre %></td>
-        <td><%= song.lyrics %></td>
-        <td><%= song.year %></td>
         <td><%= link_to 'Show', song %></td>
         <td><%= link_to 'Edit', edit_song_path(song) %></td>
         <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -41,5 +37,12 @@
     <% end %>
   </tbody>
 </table>
+
+<% else %>
+
+<h2>This playlist has no songs on it. </h2>
+
+<% end %>
+
 <%= link_to 'Edit', edit_playlist_path(@playlist) %> |
 <%= link_to 'Back', playlists_path %>
