@@ -14,7 +14,7 @@ class SongsController < ApplicationController
 
   # GET /songs/new
   def new
-    @song = Song.new
+    @song = Playlist.find(params[:playlist_id]).songs.build
   end
 
   # GET /songs/1/edit
