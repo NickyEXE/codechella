@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Name:</strong>
-  <%= @playlist.name %>
+  <h1><strong>Name:</strong>
+  <%= @playlist.name %></h1>
 </p>
 
 <p>
@@ -12,8 +10,36 @@
 
 <p>
   <strong>Author:</strong>
-  <%= @playlist.author_id %>
+  <%= @user %>
 </p>
 
+
+<h2>Songs</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Artist</th>
+      <th>Genre</th>
+      <th>Lyrics</th>
+      <th>Year</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @songs.each do |song| %>
+      <tr>
+        <td><%= song.artist %></td>
+        <td><%= song.genre %></td>
+        <td><%= song.lyrics %></td>
+        <td><%= song.year %></td>
+        <td><%= link_to 'Show', song %></td>
+        <td><%= link_to 'Edit', edit_song_path(song) %></td>
+        <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= link_to 'Edit', edit_playlist_path(@playlist) %> |
 <%= link_to 'Back', playlists_path %>
