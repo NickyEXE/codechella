@@ -19,7 +19,8 @@ class SongsController < ApplicationController
   # GET /songs/new
   def new
     @song = Song.new
-    flash[:playlist_id] = params[:playlist_id]
+    flash[:playlist_id] = params[:pid]
+    # byebug
   end
 
   # GET /songs/1/edit
@@ -29,6 +30,7 @@ class SongsController < ApplicationController
   # POST /songs
   # POST /songs.json
   def create
+
     @song = Playlist.find(flash[:playlist_id]).songs.create(song_params)
     if @song.valid?
       redirect_to Playlist.find(flash[:playlist_id])
