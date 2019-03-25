@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
 
 <h1>Songs</h1>
 
@@ -20,8 +20,8 @@
         <td><%= song.genre %></td>
         <td><%= song.lyrics %></td>
         <td><%= song.year %></td>
-        <td><%= link_to 'Show', song %></td>
-        <td><%= link_to 'Edit', edit_song_path(song) %></td>
+        <td><%= link_to 'Show', song_path(pid: , sid: song.id) %></td>
+        <td><%= link_to 'Edit', edit_song_path(sid: song.id) %></td>
         <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -31,3 +31,4 @@
 <br>
 
 <%= link_to 'New Song', new_song_path %>
+-->

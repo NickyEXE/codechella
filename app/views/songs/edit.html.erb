@@ -2,5 +2,5 @@
 
 <%= render 'form', song: @song %>
 
-<%= link_to 'Show', @song %> |
-<%= link_to 'Back', songs_path %>
+<%= link_to "Back to #{@song.name} Details", song_path(pid: params[:pid], sid: @song.id) %>
+<%= link_to 'Back to Playlist', playlist_path(params[:pid]) %>
