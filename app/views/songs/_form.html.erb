@@ -1,42 +1,15 @@
-<%= form_with(model: song, local: true) do |form| %>
-  <% if song.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(song.errors.count, "error") %> prohibited this song from being saved:</h2>
 
-      <ul>
-      <% song.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :artist %>
-    <%= form.text_field :artist %>
-  </div>
-
-  <div class="field">
-    <%= form.label :genre %>
-    <%= form.text_field :genre %>
-  </div>
-
-  <div class="field">
-    <%= form.label :lyrics %>
-    <%= form.text_field :lyrics %>
-  </div>
-
-  <div class="field">
-    <%= form.label :year %>
-    <%= form.text_field :year %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= form_for @song do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br><br>
+      <%= f.label :artist %>
+  <%= f.text_area :artist %><br><br>
+      <%= f.label :lyrics %>
+  <%= f.text_area :lyrics %><br><br>
+  <%= f.label :genre %>
+  <%= f.text_area :genre %><br><br>
+    <%= f.label :year %>
+  <%= f.text_area :year %><br><br>
+  <%= f.submit %>
+  <br>
 <% end %>
