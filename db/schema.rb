@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_03_25_192245) do
+=======
+ActiveRecord::Schema.define(version: 2019_03_25_183629) do
+>>>>>>> de4df93d91bfe14a8764edb32e43b5c6a7865548
 
   create_table "follows", force: :cascade do |t|
     t.integer "user_id"
@@ -47,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_03_25_192245) do
     t.string "dj_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
 end
