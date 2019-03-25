@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  # Do I need this skip here?
+  skip_before_action :authorized, only: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -24,17 +26,8 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
+    @user = User.create(user_params)
+    redirect_to playlists_path(@user)
   end
 
   # PATCH/PUT /users/1
@@ -69,6 +62,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:dj_name)
+      params.require(:user).permit(:dj_name, :password)
     end
 end
