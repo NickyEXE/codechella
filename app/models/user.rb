@@ -10,8 +10,7 @@ class User < ApplicationRecord
     end.flatten
   end
 
-  def spotify_playlist_creator(uri)
-    spotify_data = PlaylistImporter.new(uri)
+  def spotify_playlist_creator(spotify_data)
     playlist = self.playlists.create(name: spotify_data.name, description: spotify_data.description)
     spotify_data.playlist_importer_to_hash_array.each do |hash|
       song = Song.all.find_by(name: hash[:title], artist: hash[:artist])

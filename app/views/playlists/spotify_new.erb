@@ -1,0 +1,12 @@
+<br>
+<% if @error %>
+  <%= @error %>
+<% end %><br>
+
+<%= form_tag '/playlists/add_new_spotify_playlist' do %>
+<label>Spotify URI:</label><br>
+  <input type="text" id="uri" name="uri"><br>
+  <input type="submit" value="Submit">
+<% end %>
+
+Your Spotify Playlist's URI can be found by going to the Spotify playlist, and selecting "Copy Spotify URI" from the "Share" drop down menu.
