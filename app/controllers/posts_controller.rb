@@ -17,6 +17,7 @@ class PostsController < ApplicationController
   end
 
   def index
+    @comment = Comment.new
     @posts = Post.last_x_posts(50)
     @users = User.all
     render :index

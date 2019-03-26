@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :follows
   has_many :playlists, through: :follows
+  has_many :comments
   has_secure_password
 
   def songs
@@ -8,5 +9,5 @@ class User < ApplicationRecord
       playlist.songs
     end.flatten
   end
-  
+
 end

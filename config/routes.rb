@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments, only: [:create, :edit, :update, :destroy]
   resources :posts, only: [:index, :new, :create, :edit, :update, :destroy]
   get '/playlists/find_new_playlists', to: 'playlists#find_new_playlists', as: 'find_new_playlists'
   get '/playlists/:pid/songs/new', to: 'songs#new', as: 'new_song'
