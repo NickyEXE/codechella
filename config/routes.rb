@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
   resources :posts, only: [:index, :new, :create, :edit, :update, :destroy]
-  # get '/posts/new', to: 'posts#new', as: 'new_post'
-  # get '/posts/:postid/edit', to: 'posts#edit', as: 'edit_post'
-  # delete '/posts/:postid/destroy', to: 'posts#destroy', as: 'destroy_post'
-  # patch '/posts/:postid', to: 'post#update'
-  # get '/posts', to: 'posts#index', as: 'posts'
-  # post '/posts', to: 'posts#create'
-  # get '/post/:id', to: 'posts#show', as: 'post'
   get '/playlists/find_new_playlists', to: 'playlists#find_new_playlists', as: 'find_new_playlists'
   get '/playlists/:pid/songs/new', to: 'songs#new', as: 'new_song'
   get '/playlists/:pid/songs/:sid/edit', to: 'songs#edit', as: 'edit_song'
