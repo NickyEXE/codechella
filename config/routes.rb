@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get '/playlists/find_new_playlists', to: 'playlists#find_new_playlists', as: 'find_new_playlists'
   get '/playlists/:pid/songs/new', to: 'songs#new', as: 'new_song'
   get '/playlists/:pid/songs/:sid/edit', to: 'songs#edit', as: 'edit_song'
+  delete '/playlists/:pid/songs/:sid/remove', to: 'playlist_songs#destroy', as: 'destroy_song_add'
   patch '/playlists/:pid/songs/:sid', to: 'songs#update'
   delete '/playlists/:pid/songs/:sid/destroy', to: 'songs#destroy', as: 'destroy_song'
   get '/playlists/:pid/songs/:sid', to: 'songs#show', as: 'song'

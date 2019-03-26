@@ -30,12 +30,18 @@ class SongsController < ApplicationController
   # POST /songs
   # POST /songs.json
   def create
-
-    @song = Playlist.find(flash[:playlist_id]).songs.create(song_params)
-    if @song.valid?
-      redirect_to Playlist.find(flash[:playlist_id])
+    @playlist = Playlist.find(flash[:playlist_id])
+    @song = Song.find_by(name: params[:song][:name], artist: params[:song][:artist])
+    if @song
+      PlaylistSong.create(playlist_id: @playlist.id, song_id: @song.id)
+      redirect_to @playlist
     else
-      redirect_to new_song_path(playlist_id: flash[:playlist_id])
+      @song = @playlist.songs.create(song_params)
+      if @song.valid?
+        redirect_to @playlist
+      else
+        redirect_to new_song_path(playlist_id: @playlist.id)
+      end
     end
   end
 

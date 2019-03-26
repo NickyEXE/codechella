@@ -34,8 +34,7 @@
         <td><%= song.artist %></td>
         <td><%= link_to 'Show', "/playlists/#{@playlist.id}/songs/#{song.id}" %></td>
         <% if @playlist.permission_to_edit?(current_user) && @playlist.permission_to_delete?(current_user)%>
-        <td><%= link_to 'Edit', "/playlists/#{@playlist.id}/songs/#{song.id}/edit" %></td>
-        <td><%= link_to 'Destroy', "/playlists/#{@playlist.id}/songs/#{song.id}/destroy", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Remove from Playlist', "/playlists/#{@playlist.id}/songs/#{song.id}/remove", method: :delete %></td>
         <% else %>
         <td></td>
         <td></td>
