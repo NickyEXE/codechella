@@ -1,6 +1,6 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
-    dj_name "MyString"
-    password_digest "MyString"
+    dj_name { "MyString" }
+    password_digest { "MyString" }
   end
 end

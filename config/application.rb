@@ -14,7 +14,7 @@ module Codechella
     config.load_defaults 5.2
 
     config.generators do |g|
-      g.fixture_replacement :factory_girl
+      g.fixture_replacement :factory_bot
     end
 
     # Settings in config/environments/* take precedence over those specified here.
