@@ -9,16 +9,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body><center>
     <% if current_user %>
     <p>You are logged in as: <%= current_user.dj_name %></p>
-     <ul>
-      <li><%= link_to "See the newsfeed", posts_path %><br></li>
-      <li><%= link_to "Your playlists", playlists_path %><br></li>
-      <li><%= link_to "Logout", logout_path, method: 'delete' %></li>
-    </ul>
+      <p><%= link_to "See the newsfeed", posts_path %><br></p>
+      <p><%= link_to "Your playlists", playlists_path %><br></p>
+      <p><%= link_to "Logout", logout_path, method: 'delete' %></p>
     ----------------------------------------
     <% end %>
     <%= yield %>
-  </body>
+  </center></body>
 </html>

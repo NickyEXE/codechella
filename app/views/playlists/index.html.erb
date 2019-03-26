@@ -1,6 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Playlists</h1>
+
+<% if @playlists.size >0 %>
 
 <table>
   <thead>
@@ -36,8 +36,12 @@
     <% end %>
   </tbody>
 </table>
+<% else %>
+  <h3>You're not following any playlists! Find a playlist, create one, or hit up the feed to see what's being shared!</h3>
 
+<% end %>
 <br>
 
-<%= link_to 'New Playlist', new_playlist_path %>
-<%= link_to 'Find a new playlist', find_new_playlists_path %>
+<p><%= link_to 'New Playlist', new_playlist_path %></p>
+<p><%= link_to 'Find a new playlist', find_new_playlists_path %></p>
+<p><%= link_to 'Go to the community feed', posts_path %></p>
