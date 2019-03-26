@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Title:</strong>
+  <%= @song.name %>
+</p>
+
+<p>
   <strong>Artist:</strong>
   <%= @song.artist %>
 </p>
@@ -12,12 +17,14 @@
 
 <p>
   <strong>Lyrics:</strong>
-  <%= @song.lyrics %>
+  <%= @song.new_lyrics %>
 </p>
 
 <p>
   <strong>Year:</strong>
   <%= @song.year %>
 </p>
+
+
 <%= link_to 'Edit', edit_song_path(sid: params[:sid], pid: params[:pid]) %> |
 <%= link_to 'Back', playlist_path(params[:pid]) %>

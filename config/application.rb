@@ -1,5 +1,7 @@
 require_relative 'boot'
 
+require 'rest_client'
+require 'uri'
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
