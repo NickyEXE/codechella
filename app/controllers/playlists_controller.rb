@@ -28,8 +28,11 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists/1/edit
   def edit
-
-    render :edit
+    if current_user == @playlist.original_author
+      render :edit
+    else
+      redirect_to playlists_path
+    end
   end
 
   # POST /playlists

@@ -16,4 +16,13 @@ class Playlist < ApplicationRecord
     !!self.follows.find_by(user_id: current_user.id)
   end
 
+  def permission_to_edit?(current_user)
+    self.original_author == current_user
+  end
+
+  def permission_to_delete?(current_user)
+    self.original_author == current_user
+  end
+
+
 end
