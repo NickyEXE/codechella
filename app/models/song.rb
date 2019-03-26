@@ -19,23 +19,9 @@ class Song < ApplicationRecord
       "This program needs both a song name and a song title to render its lyrics."
     end
   end
-  #
-  # def new_lyrics_initializer
-  #   if self.artist && self.name
-  #     begin
-  #       url = URI.escape("https://api.lyrics.ovh/v1/#{self.artist.downcase}/#{self.name.downcase}")
-  #       response = RestClient.get url
-  #     rescue RestClient::ExceptionWithResponse => e
-  #       if e.class == RestClient::NotFound
-  #         self.update(lyrics: "I'm sorry, it looks like we don't have lyrics available for #{self.artist}'s #{self.name}'")
-  #       end
-  #     end
-  #     if response
-  #       self.update(lyrics: JSON.parse(response)["lyrics"])
-  #     end
-  #   else
-  #     self.update(lyrics: "This program needs both a song name and a song title to render its lyrics.")
-  #   end
-  # end
+  #Spotify API Stuff
+
+  
+
 
 end

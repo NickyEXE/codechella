@@ -15,6 +15,10 @@ class PlaylistsController < ApplicationController
     render :find_new_playlists
   end
 
+  def add_spotify_playlist
+    render :spotify_new
+  end
+
   def show
     @songs = @playlist.songs
   end
