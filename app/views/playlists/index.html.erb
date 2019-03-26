@@ -8,6 +8,7 @@
       <th>Name</th>
       <th>Description</th>
       <th>Author</th>
+      <th>Your Playlist?</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,11 @@
         <td><%= playlist.name %></td>
         <td><%= playlist.description %></td>
         <td><%= playlist.original_author_dj_name %></td>
+        <% if playlist.original_author == current_user %>
+        <td>This is your playlist.</td>
+        <% else %>
+        <td><%= link_to 'Unfollow this Playlist', destroy_follow_path(:pid => playlist.id), method: :delete %></td>
+        <% end %>
         <td><%= link_to 'Show', playlist %></td>
         <td><%= link_to 'Edit', edit_playlist_path(playlist) %></td>
         <td><%= link_to 'Destroy', playlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
