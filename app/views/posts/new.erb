@@ -1,0 +1,6 @@
+<h1>Share a playlist you follow with the community</h1>
+<% if @user.playlists.length > 0 %>
+  <%= render 'form'%>
+  <% else %>
+    <h2> "You aren't following any playlists!"</h2>
+<% end %>

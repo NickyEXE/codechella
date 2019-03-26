@@ -1,0 +1,9 @@
+<%= form_for @post do |f| %>
+  <%= f.label "Which playlist do you want to share?" %><br>
+  <%= f.collection_select(:playlist_id, @user.playlists, :id, :name) %><br>
+  <%= f.label :title %><br>
+  <%= f.text_field :title %><br>
+  <%= f.label :description %><br>
+  <%= f.text_area :description %><br>
+  <%= f.submit %>
+  <% end %>
