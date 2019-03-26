@@ -2,36 +2,27 @@ class UsersController < ApplicationController
   # Do I need this skip here?
   skip_before_action :authorized, only: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
-  # GET /users
-  # GET /users.json
+  
   def index
     @users = User.all
   end
 
-  # GET /users/1
-  # GET /users/1.json
   def show
   end
 
-  # GET /users/new
   def new
     @user = User.new
   end
 
-  # GET /users/1/edit
   def edit
   end
 
-  # POST /users
-  # POST /users.json
   def create
     @user = User.create(user_params)
-    redirect_to playlists_path(@user)
+    session[:user_id] = @user.id
+    redirect_to :controller => "playlists", :action => "index"
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
       if @user.update(user_params)
