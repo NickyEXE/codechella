@@ -1,14 +1,9 @@
 class PlaylistsController < ApplicationController
   before_action :set_playlist, only: [:show, :edit, :update, :destroy]
 
-  # GET /playlists
-  # GET /playlists.json
   def index
     @playlists = current_user.playlists
   end
-
-  # GET /playlists/1
-  # GET /playlists/1.json
 
   def find_new_playlists
     @playlists = Playlist.all
@@ -39,19 +34,16 @@ class PlaylistsController < ApplicationController
     end
   end
 
-
   def show
     @songs = @playlist.songs
   end
 
-  # GET /playlists/new
   def new
     @users = User.all
     @playlist = Playlist.new
     render :new
   end
 
-  # GET /playlists/1/edit
   def edit
     if current_user == @playlist.original_author
       render :edit
@@ -60,8 +52,6 @@ class PlaylistsController < ApplicationController
     end
   end
 
-  # POST /playlists
-  # POST /playlists.json
   def create
     @playlist = current_user.playlists.create(playlist_params)
 
@@ -76,8 +66,6 @@ class PlaylistsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /playlists/1
-  # PATCH/PUT /playlists/1.json
   def update
     if @playlist.update(playlist_params)
       redirect_to @playlist
@@ -87,8 +75,6 @@ class PlaylistsController < ApplicationController
     end
   end
 
-  # DELETE /playlists/1
-  # DELETE /playlists/1.json
   def destroy
     @playlist.destroy
     respond_to do |format|
@@ -98,12 +84,10 @@ class PlaylistsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_playlist
       @playlist = Playlist.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def playlist_params
       params.require(:playlist).permit(:name, :description, :author_id)
     end

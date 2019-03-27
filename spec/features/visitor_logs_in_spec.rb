@@ -4,7 +4,6 @@ require 'rails_helper'
 feature 'Visitor logs in' do
   scenario 'with valid dj name and password' do
     sign_up_with 'MyString', 'MyString'
-    login_with 'MyString', 'MyString'
 
     expect(page).to have_content('Logout')
   end

@@ -4,7 +4,6 @@ require 'rails_helper'
 feature 'User creates a playlist' do
   scenario 'new user' do
     sign_up_with 'MyString', 'MyString'
-    login_with 'MyString', 'MyString'
     create_playlist 'MyPlaylist', 'This is a test playlist'
 
     expect(page).to have_content('MyPlaylist')
@@ -24,12 +23,5 @@ feature 'User creates a playlist' do
     fill_in 'user_dj_name', with: dj_name
     fill_in 'user_password', with: password
     click_button 'Create User'
-  end
-
-  def login_with(dj_name, password)
-    visit login_path
-    fill_in 'dj_name', with: dj_name
-    fill_in 'password', with: password
-    click_button 'Login'
   end
 end
