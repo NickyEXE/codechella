@@ -2,19 +2,31 @@ class UsersController < ApplicationController
   # Do I need this skip here?
   skip_before_action :authorized, only: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  
-  def index
-    @users = User.all
-  end
 
+  # if user is not current user,
   def show
+    if @user.id != current_user.id
+      redirect_to "/users/#{current_user.id}"
+    else
+      render :show
+    end
   end
 
   def new
-    @user = User.new
+    if !!current_user
+      redirect_to playlists_path
+    else
+      @user = User.new
+      render :new
+    end
   end
 
   def edit
+    if @user.id != current_user.id
+      redirect_to "/users/#{current_user.id}/edit"
+    else
+      render :edit
+    end
   end
 
   def create
