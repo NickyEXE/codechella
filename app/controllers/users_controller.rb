@@ -1,20 +1,30 @@
 class UsersController < ApplicationController
-  # Do I need this skip here?
   skip_before_action :authorized, only: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  
-  def index
-    @users = User.all
-  end
 
   def show
+    if @user.id != current_user.id
+      redirect_to "/users/#{current_user.id}"
+    else
+      render :show
+    end
   end
 
   def new
-    @user = User.new
+    if !!current_user
+      redirect_to playlists_path
+    else
+      @user = User.new
+      render :new
+    end
   end
 
   def edit
+    if @user.id != current_user.id
+      redirect_to "/users/#{current_user.id}/edit"
+    else
+      render :edit
+    end
   end
 
   def create
@@ -35,8 +45,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     @user.destroy
     respond_to do |format|
@@ -46,12 +54,10 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:dj_name, :password)
     end

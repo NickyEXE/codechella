@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   post '/playlists/:pid/follows/create', to: 'follows#create', as: "new_follow"
   delete '/playlists/:pid/follows/destroy', to: 'follows#destroy', as: "destroy_follow"
   resources :playlists
-  resources :users
+  resources :users, only: [:show, :new, :create, :edit, :update, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/login', to: 'sessions#new', as: 'login'
