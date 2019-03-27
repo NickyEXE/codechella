@@ -6,7 +6,6 @@ feature 'User can follow and unfollow a playlist' do
       @user = FactoryBot.create(:user)
       @playlist = FactoryBot.create(:playlist_with_follows)
       sign_up_with 'MyString', 'MyString'
-      login_with 'MyString', 'MyString'
       find_a_new_playlist
       follow_a_new_playlist
       
@@ -19,7 +18,6 @@ feature 'User can follow and unfollow a playlist' do
         @user = FactoryBot.create(:user)
         @playlist = FactoryBot.create(:playlist_with_follows)
         sign_up_with 'MyString', 'MyString'
-        login_with 'MyString', 'MyString'
         find_a_new_playlist
         follow_a_new_playlist
         expect(page).to have_content('Name')
@@ -48,12 +46,5 @@ feature 'User can follow and unfollow a playlist' do
         fill_in 'user_dj_name', with: dj_name
         fill_in 'user_password', with: password
         click_button 'Create User'
-      end
-    
-      def login_with(dj_name, password)
-        visit login_path
-        fill_in 'dj_name', with: dj_name
-        fill_in 'password', with: password
-        click_button 'Login'
       end
   end
