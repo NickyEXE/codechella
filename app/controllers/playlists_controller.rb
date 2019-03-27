@@ -21,15 +21,20 @@ class PlaylistsController < ApplicationController
   end
 
   def add_spotify_playlist
-    begin
-      spotify_data = PlaylistImporter.new(params[:uri])
-    rescue RestClient::ExceptionWithResponse => e
-    end
-    if spotify_data
-      current_user.spotify_playlist_creator(spotify_data)
-      redirect_to playlists_path
+    if (params[:url]).class == String && (params[:url]).length >0 && (params[:url]).index("/")
+      begin
+        spotify_data = PlaylistImporter.new(params[:url])
+      rescue RestClient::ExceptionWithResponse => e
+      end
+      if spotify_data
+        current_user.spotify_playlist_creator(spotify_data)
+        redirect_to playlists_path
+      else
+        flash[:error] = "Error: Invalid Playlist Link"
+        redirect_to add_spotify_playlist_path
+      end
     else
-      flash[:error] = "Error: Invalid URI"
+      flash[:error] = "Error: Please add a valid link."
       redirect_to add_spotify_playlist_path
     end
   end
