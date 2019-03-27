@@ -1,11 +1,11 @@
 class PlaylistImporter
 
-  attr_reader :uri, :playlist_importer
+  attr_reader :url, :playlist_importer
 
-  def initialize(uri)
-    @uri = uri
-    uri_array = @uri.split(":")
-    @playlist_importer = RSpotify::Playlist.find(uri_array[2],uri_array[4])
+  def initialize(url)
+    @url = url
+    playlist_link = @url.split("/")[@url.split("/").index("playlist")+1][0..21]
+    @playlist_importer = RSpotify::Playlist.find("abc",playlist_link)
   end
 
   def song_info(track)

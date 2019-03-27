@@ -53,7 +53,11 @@
 <% end %>
 
   <% if @playlist.permission_to_edit?(current_user) && @playlist.permission_to_delete?(current_user)%>
+  <% if @playlist.url %>
+  <%= link_to 'Add Song to Playlist (Will not update embedded web player)', new_song_path(pid: @playlist.id) %> |
+  <% else %>
   <%= link_to 'Add Song to Playlist', new_song_path(pid: @playlist.id) %> |
+  <% end %>
   <%= link_to 'Edit Playlist Properties', edit_playlist_path(pid: @playlist.id) %> |
   <% else %>
   <% end %>
