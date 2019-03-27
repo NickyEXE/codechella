@@ -1,5 +1,13 @@
 <br><br>
 
+<% if @errors %>
+  <% @errors.each do |error| %>
+    Error: <%= error %><br>
+  <% end %>
+  --------------------------
+  <br>
+<% end %>
+
 <% if @posts %>
   <% @posts.each do |post| %>
     <% if post.playlist %>

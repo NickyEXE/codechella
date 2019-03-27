@@ -17,6 +17,7 @@ class PostsController < ApplicationController
   end
 
   def index
+    @errors = flash[:errors]
     @comment = Comment.new
     @posts = Post.last_x_posts(50)
     @users = User.all
