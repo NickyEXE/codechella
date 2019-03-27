@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   def new
+    @errors = flash[:errors]
     @post = Post.new
     @user = current_user
   end
@@ -11,8 +12,8 @@ class PostsController < ApplicationController
     if @post.valid?
       redirect_to posts_path
     else
-      @errors = @post.errors.full_messages
-      render :new
+      flash[:errors] = @post.errors.full_messages
+      redirect_to new_post_path
     end
   end
 
