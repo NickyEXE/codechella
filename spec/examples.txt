@@ -1,6 +1,7 @@
-example_id                                           | status | run_time        |
----------------------------------------------------- | ------ | --------------- |
-./spec/features/visitor_creates_account_spec.rb[1:1] | passed | 0.03135 seconds |
-./spec/features/visitor_logs_in_spec.rb[1:1]         | passed | 0.45498 seconds |
-./spec/features/visitor_logs_in_spec.rb[1:2]         | passed | 0.01864 seconds |
-./spec/models/user_spec.rb[1:1]                      | passed | 0.0104 seconds  |
+example_id                                            | status | run_time        |
+----------------------------------------------------- | ------ | --------------- |
+./spec/features/user_creates_ a_playlist_spec.rb[1:1] | passed | 0.12786 seconds |
+./spec/features/visitor_creates_account_spec.rb[1:1]  | passed | 0.0337 seconds  |
+./spec/features/visitor_logs_in_spec.rb[1:1]          | passed | 0.16923 seconds |
+./spec/features/visitor_logs_in_spec.rb[1:2]          | passed | 0.22965 seconds |
+./spec/models/user_spec.rb[1:1]                       | passed | 0.0104 seconds  |
