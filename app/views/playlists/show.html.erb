@@ -12,6 +12,10 @@
   <%= @playlist.original_author_dj_name %>
 </p>
 
+<% if @playlist.url %>
+<iframe src="<%= "https://open.spotify.com/embed/playlist/"+@playlist.url.split("/").last%>" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+<% end %>
+
 <% if @songs.length > 0 %>
 
 <h2>Songs</h2>

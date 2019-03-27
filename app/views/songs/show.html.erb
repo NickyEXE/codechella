@@ -11,13 +11,8 @@
 </p>
 
 <p>
-  <strong>Genre:</strong>
-  <%= @song.genre %>
-</p>
-
-<p>
-  <strong>Lyrics:</strong>
-  <%= simple_format(@song.new_lyrics) %>
+  <strong>Album:</strong>
+  <%= @song.album %>
 </p>
 
 <p>
@@ -25,7 +20,15 @@
   <%= @song.year %>
 </p>
 
- 
+<% if @song.url %>
+<iframe src="<%= @song.url.split(".com/").join(".com/embed/") %>" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+<% end %>
+<p>
+  <strong>Lyrics:</strong>
+  <%= simple_format(@song.new_lyrics) %>
+</p>
+
+
 
 
 <%= link_to 'Edit', edit_song_path(sid: params[:sid], pid: params[:pid]) %> |
