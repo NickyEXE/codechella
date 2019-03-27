@@ -15,7 +15,8 @@ class PlaylistImporter
     url = track.external_urls.values.first
     popularity = track.popularity
     year = track.album.release_date[0..3].to_i
-    {title: title, artist: artist, album: album, url: url, popularity: popularity, year: year}
+    image_url = track.album.images.first["url"]
+    {title: title, artist: artist, album: album, url: url, popularity: popularity, year: year, image_url: image_url}
   end
 
   def playlist_importer_to_hash_array
@@ -25,7 +26,7 @@ class PlaylistImporter
   end
 
   def name
-    self.playlist_importer.name
+    clean_string(self.playlist_importer.name)
   end
 
   def description
@@ -33,8 +34,12 @@ class PlaylistImporter
     if description == ""
       "No description on spotify."
     else
-      description
+      clean_string(description)
     end
+  end
+
+  def clean_string(string)
+    string.gsub(/&#x27;/,"'")
   end
 
 end
