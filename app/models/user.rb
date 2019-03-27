@@ -17,7 +17,8 @@ class User < ApplicationRecord
       if song
         PlaylistSong.create(playlist_id: playlist.id, song_id: song.id)
       else
-        playlist.songs.create(name: hash[:title], artist: hash[:artist], genre: "Need to delete this", year: hash[:year])
+        #playlist.songs.create(name: hash[:title], artist: hash[:artist], year: hash[:year])
+        playlist.songs.create(hash)
       end
     end
   end

@@ -48,6 +48,10 @@
 
 <% end %>
 
+<% if @playlist.url %>
+<iframe src="<%= @playlist.url.split(".com/").join(".com/embed/") %>" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+<% end %>
+
   <% if @playlist.permission_to_edit?(current_user) && @playlist.permission_to_delete?(current_user)%>
   <%= link_to 'Add Song to Playlist', new_song_path(pid: @playlist.id) %> |
   <%= link_to 'Edit Playlist Properties', edit_playlist_path(pid: @playlist.id) %> |
