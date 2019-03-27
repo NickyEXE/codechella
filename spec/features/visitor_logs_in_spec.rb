@@ -9,8 +9,8 @@ feature 'Visitor logs in' do
     expect(page).to have_content('Logout')
   end
 
-  scenario 'with invalid email' do
-    login_with 'invalid_email', 'password'
+  scenario 'without password' do
+    login_with 'invalid_email', ''
 
     expect(page).to have_content('Invalid')
   end
