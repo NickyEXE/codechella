@@ -16,21 +16,13 @@
   <tbody>
     <% @playlists.each do |playlist| %>
       <tr>
-        <td><%= playlist.name %></td>
+        <td><%= link_to playlist.name, playlist %></td>
         <td><%= playlist.description %></td>
         <td><%= playlist.original_author_dj_name %></td>
         <% if playlist.original_author == current_user %>
         <td>This is your playlist.</td>
         <% else %>
         <td><%= link_to 'Unfollow this Playlist', destroy_follow_path(:pid => playlist.id), method: :delete %></td>
-        <% end %>
-        <td><%= link_to 'Show', playlist %></td>
-        <% if playlist.permission_to_edit?(current_user) && playlist.permission_to_delete?(current_user) %>
-        <td><%= link_to 'Edit', edit_playlist_path(playlist) %></td>
-        <td><%= link_to 'Destroy', playlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% else %>
-        <td></td>
-        <td></td>
         <% end %>
       </tr>
     <% end %>
