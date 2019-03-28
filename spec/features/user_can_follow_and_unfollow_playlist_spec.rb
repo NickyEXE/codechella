@@ -37,7 +37,7 @@ feature 'User can follow and unfollow a playlist' do
         end
 
       def find_a_new_playlist
-        click_on 'Find a new playlist'
+        click_on 'All Playlists'
       end
 
       def sign_up_with(dj_name, password)
