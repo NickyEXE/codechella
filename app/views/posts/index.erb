@@ -1,28 +1,38 @@
 <br><br>
 
+<% if @errors %>
+  <% @errors.each do |error| %>
+    Error: <%= error %><br>
+  <% end %>
+  --------------------------
+  <br>
+<% end %>
+
 <% if @posts %>
   <% @posts.each do |post| %>
-    <strong><%= @users.find(post.user_id).dj_name %></strong> shared <%= link_to post.playlist.name, post.playlist %>
-    <h3><%= post.title %></h3>
-    <%= post.description %><br><br>
-    <% if post.comments.size > 0 %>
-      <strong>Comments:</strong><br>
-      <% post.comments.order(:created_at).each do |comment|%>
-        <%= comment.user.dj_name%> wrote: <br>
-        <%= comment.comment_text %>
-        <br><br>
+    <% if post.playlist %>
+      <strong><%= @users.find(post.user_id).dj_name %></strong> shared <%= link_to post.playlist.name, post.playlist %>
+      <h3><%= post.title %></h3>
+      <%= post.description %><br><br>
+      <% if post.comments.size > 0 %>
+        <strong>Comments:</strong><br>
+        <% post.comments.order(:created_at).each do |comment|%>
+          <%= comment.user.dj_name%> wrote: <br>
+          <%= comment.comment_text %>
+          <br><br>
+        <% end %>
       <% end %>
+      <%= form_for @comment do |f| %>
+        <%= f.text_area :comment_text, placeholder: "Post a Comment" %><br>
+        <%= f.hidden_field 'post_id', value: post.id %>
+        <%= f.submit %>
+      <% end %>
+      <% if post.user_id == current_user.id %>
+        <%= link_to "Edit your post", edit_post_path(post) %> -
+        <%= link_to "Delete your post", post, :method => :delete, :confirm => "Sure you want to delete your content?" %><br>
+      <% end %>
+      -------------------------<br>
     <% end %>
-    <%= form_for @comment do |f| %>
-      <%= f.text_area :comment_text, placeholder: "Post a Comment" %><br>
-      <%= f.hidden_field 'post_id', value: post.id %>
-      <%= f.submit %>
-    <% end %>
-    <% if post.user_id == current_user.id %>
-      <%= link_to "Edit your post", edit_post_path(post) %> -
-      <%= link_to "Delete your post", post, :method => :delete, :confirm => "Sure you want to delete your content?" %><br>
-    <% end %>
-    -------------------------<br>
   <% end %>
 <% else %>
   <h2>There are no posts in this community! Be the first!</h2>

@@ -10,7 +10,8 @@ class CommentsController < ApplicationController
       @errors = @comment.errors.full_messages
       @posts = Post.last_x_posts(50)
       @users = User.all
-      render :index
+      flash[:errors] = @errors
+      redirect_to posts_path
     end
   end
 
