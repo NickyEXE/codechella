@@ -1,12 +1,23 @@
+<div class="container">
+
 <br>
 <% if @error %>
   <%= @error %>
 <% end %><br>
 
-<%= form_tag '/playlists/add_new_spotify_playlist' do %>
-<label>Spotify Playlist Link:</label><br>
-  <input type="text" id="url" name="url"><br>
-  <input type="submit" value="Submit">
-<% end %>
+<h3>Spotify Playlist Link:</h3>
+<form class="url" id="url" action="/playlists/add_new_spotify_playlist" accept-charset="UTF-8" method="post">
+  <%= token_tag %>
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" value="<%= form_authenticity_token() %>" name="authenticity_token"/>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <input class="btn btn-outline-secondary bg-danger text-white" type="submit" value="Enter Spotify Link">
+  </div>
+  <input class="form-control" aria-label="Enter Spotify Playlist Link" name="url" id="url">
+</div>
+</form>
 
-Copy your playlist link from spotify. Importing a long playlist may take a little while. If it's loading, it's working.
+<br><br>
+<h4>Copy your playlist link from spotify.<br>Importing a long playlist may take a little while.<br>If it's loading, it's working.</h4>
+</div>

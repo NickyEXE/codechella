@@ -1,8 +1,9 @@
 class Playlist < ApplicationRecord
-  has_many :follows
+  has_many :follows, dependent: :destroy
   has_many :users, through: :follows
-  has_many :playlist_songs
+  has_many :playlist_songs, dependent: :destroy
   has_many :songs, through: :playlist_songs
+
 
   def original_author
     User.find(Follow.all.where(playlist_id: self.id).order(:created_at).first.user_id)

@@ -6,4 +6,4 @@ example_id                                                         | status | ru
 ./spec/features/visitor_creates_account_spec.rb[1:1]               | passed | 0.03962 seconds |
 ./spec/features/visitor_logs_in_spec.rb[1:1]                       | passed | 0.03791 seconds |
 ./spec/features/visitor_logs_in_spec.rb[1:2]                       | passed | 0.04573 seconds |
-./spec/models/user_spec.rb[1:1]                                    | passed | 0.0104 seconds  |
+

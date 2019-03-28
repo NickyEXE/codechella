@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :playlist
   has_many :comments
+  
   validates :title, presence: true
 
   #selects the last x posts to render in the post view

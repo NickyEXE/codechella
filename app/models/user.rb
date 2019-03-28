@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  has_many :follows
+  has_many :follows, dependent: :destroy
   has_many :playlists, through: :follows
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_secure_password
 
   def songs

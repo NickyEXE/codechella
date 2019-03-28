@@ -1,6 +1,6 @@
-<p>
+<div class="container">
+
   <h1><%= @playlist.name %></h1>
-</p>
 
 <p>
   <strong>Description:</strong>
@@ -15,23 +15,24 @@
 <% if @playlist.url %>
 <iframe src="<%= "https://open.spotify.com/embed/playlist/"+@playlist.url.split("/").last%>" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 <% end %>
-
-<% if @songs.length > 0 %>
-
-<h2>Songs</h2>
-
-  <% if @permission%>
-    <% if @playlist.url %>
-    <%= link_to 'Add Song to Playlist (Will not update embedded web player)', new_song_path(pid: @playlist.id) %> |
-    <% else %>
-    <%= link_to 'Add Song to Playlist', new_song_path(pid: @playlist.id) %> |
-    <% end %>
-  <%= link_to 'Edit Playlist Properties', edit_playlist_path(pid: @playlist.id) %> |
-  <%= link_to 'Destroy', @playlist, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<br><br>
+<% if @permission%>
+  <% if @playlist.url %>
+  <%= link_to 'Add Song to Playlist (Will not update embedded web player)', new_song_path(pid: @playlist.id) %> |
   <% else %>
+  <%= link_to 'Add Song to Playlist', new_song_path(pid: @playlist.id) %> |
   <% end %>
+<%= link_to 'Edit Playlist Properties', edit_playlist_path(pid: @playlist.id) %> |
+<%= link_to 'Destroy', @playlist, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% else %>
+<% end %>
 <%= link_to 'Back', playlists_path %>
 
+
+<% if @songs.length > 0 %>
+<div class="container">
+<div class="transparent">
+<h2>Songs</h2>
 <table>
   <thead>
     <tr>
@@ -62,3 +63,6 @@
 <h2>This playlist has no songs on it. </h2>
 
 <% end %>
+</div>
+</div>
+</div>
