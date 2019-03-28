@@ -16,6 +16,7 @@
 
   <body><center>
 <!--Navbar-->
+<% if current_user %>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
   <!-- Navbar brand -->
@@ -49,7 +50,7 @@
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false" style="color:rgba(255,255,255,.5);">My Account</a>
         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Settings</a>
+          <%= link_to 'Settings', edit_user_path(current_user), :class => "dropdown-item" %>
           <%= link_to "Logout", logout_path, method: 'delete', :class => "dropdown-item" %>
         </div>
       </nav>
@@ -57,6 +58,7 @@
   <!-- Collapsible content -->
 
 </nav>
+<% end %>
 
     <% if current_user %>
     <p>You are logged in as: <%= current_user.dj_name %></p>
