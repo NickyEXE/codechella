@@ -36,6 +36,7 @@ class PlaylistsController < ApplicationController
 
   def show
     @songs = @playlist.songs
+    @permission = @playlist.permission_to_edit?(current_user) && @playlist.permission_to_delete?(current_user)
   end
 
   def new

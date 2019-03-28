@@ -20,7 +20,7 @@
 
 <h2>Songs</h2>
 
-  <% if @playlist.permission_to_edit?(current_user) && @playlist.permission_to_delete?(current_user)%>
+  <% if @permission%>
     <% if @playlist.url %>
     <%= link_to 'Add Song to Playlist (Will not update embedded web player)', new_song_path(pid: @playlist.id) %> |
     <% else %>
@@ -46,7 +46,7 @@
       <tr>
         <td><%= link_to song.name, "/playlists/#{@playlist.id}/songs/#{song.id}"  %></td>
         <td><%= song.artist %></td>
-        <% if @playlist.permission_to_edit?(current_user) && @playlist.permission_to_delete?(current_user)%>
+        <% if @permission%>
         <td><%= link_to 'Remove from Playlist', "/playlists/#{@playlist.id}/songs/#{song.id}/remove", method: :delete %></td>
         <% else %>
         <td></td>
