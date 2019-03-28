@@ -18,7 +18,7 @@
 
  @font-face {
     font-family: "Urban Jungle Regular";
-    src: url(urban.otf);
+    src: url(/assets/urban.otf);
   }
 
 body {
