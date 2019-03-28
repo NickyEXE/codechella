@@ -1,16 +1,10 @@
 <%# <link href="signin.css" rel="stylesheet"> %>
 
-<style>
-body {
-   background-image: none;
-}
-</style>
-
-<div class="transparent">
+<div class="transparent login-container">
 
 <img src="<%=image_url('logo.png')%>"> 
 
-<h1>Signup!</h1>
+<h1>Signup!</h1><br>
 
 <%# <%= render 'form', user: @user %>
 
@@ -19,11 +13,11 @@ body {
 
 
 <%= form_for @user, :html => {:class => "form-signin"} do |f| %>
-<%= f.label :dj_name %>
-<%= f.text_field :dj_name %><br>
-<%= f.label :password %>
-<%= f.text_field :password %><br>
-<%= f.submit %>
+<%= f.label :dj_name %><br>
+<%= f.text_field :dj_name %><br><br>
+<%= f.label :password %><br>
+<%= f.text_field :password %><br><br>
+<%= f.submit %><br><br>
 <% end %>
 <p>Already have an account? <%= link_to "Sign in", login_path %></p>
 

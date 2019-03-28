@@ -1,24 +1,24 @@
-<style>
-body {
-   background-image: none;
-}
-</style>
+
+
+<div class="transparent login-container">
 
 <img src="<%=image_url('logo.png')%>"> 
 <%# src='/app/assets/images/logo.png'> %>
 
-<h1>Login</h1>
+<h1>Login</h1><br>
 
 <h4><%=flash[:notice] %></h4>
 
 <%= form_tag(login_path) do %>
-<%= label_tag :dj_name %>
-<%= text_field_tag :dj_name %><br>
+<%= label_tag :dj_name %><br>
+<%= text_field_tag :dj_name %><br><br>
 
-<%= label_tag :password %>
-<%= password_field_tag :password %><br>
+<%= label_tag :password %><br>
+<%= password_field_tag :password %><br><br>
 
-<%= submit_tag 'Login' %>
+<%= submit_tag 'Login' %><br><br>
 <% end %>
 
 <p>New User? <%= link_to "Create an account", new_user_path %></p>
+
+</div>
