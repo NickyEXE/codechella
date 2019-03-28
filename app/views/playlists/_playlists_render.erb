@@ -1,0 +1,25 @@
+
+<div class="container">
+<div class="row text-center" style="display:flex; flex-wrap: wrap; justify-content: space-between;">
+<% @playlists.each do |playlist| %>
+<div class="col-md-4 col-sm-6 card text-white bg-dark border-warning" >
+  <a href="<%= playlist_path(playlist) %>"><img class="card-img-top" src="<%=playlist.song_for_image ? playlist.song_for_image.image_url : image_url('logo.png')%>" alt="<%=playlist.song_for_image ? "#{playlist.song_for_image.album} Cover" : "Codechella Logo" %>"></a>
+  <div class="card-body">
+    <h5 class="card-title playlist_name text-white"><%= link_to playlist.name, playlist %></h5>
+    <h6 class="card-subtitle mb-2 text-white"> <%= playlist.original_author_dj_name %></h6>
+    <p class="card-text text-white"><%= playlist.description %></p>
+    <% if playlist.original_author == current_user %>
+    <div class= "your_playlist">This is your playlist.</div>
+    <% elsif playlist.does_user_follow?(current_user) %>
+    <a href="<%= new_follow_path(:pid => playlist.id) %>" class="btn btn-primary">Unfollow this Playlist</a>
+    <% else %>
+    <form action="<%= new_follow_path(:pid => playlist.id) %>" method="post">
+     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <button class="btn btn-primary" type="submit">Follow this Playlist</button>
+    </form>
+    <% end %>
+  </div>
+</div>
+<% end %>
+</div>
+</div>
