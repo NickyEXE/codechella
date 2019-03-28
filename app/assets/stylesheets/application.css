@@ -43,3 +43,10 @@ a {
  .card-body a:active {
    color: #ffc107 ;
  }
+ .comment {
+   background-color: purple
+ }
+
+ .post {
+   text-align: left;
+ }
