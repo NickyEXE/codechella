@@ -24,5 +24,19 @@ class Playlist < ApplicationRecord
     self.original_author == current_user
   end
 
+  def song_for_image
+    self.songs.find do |song|
+      song.image_url
+    end
+  end
+
+  # def image
+  #   song = self.song_for_image
+  #   if song
+  #     song.image_url
+  #   else
+  #     image_url('logo.png')
+  #   end
+  # end
 
 end

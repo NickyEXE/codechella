@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+ /* unvisited link */
+ .card-body a:link {
+   color: #ffc107 ;
+ }
+
+ /* visited link */
+ .card-body a:visited {
+   color: #ffc107 ;
+ }
+
+ /* mouse over link */
+ .card-body a:hover {
+   color: hotpink;
+ }
+
+ /* selected link */
+ .card-body a:active {
+   color: #ffc107 ;
+ }

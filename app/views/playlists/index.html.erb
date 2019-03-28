@@ -1,40 +1,16 @@
 <h1>Playlists</h1>
 
+<p><%= link_to 'New Playlist', new_playlist_path %></p>
+<p><%= link_to 'Find a new playlist', find_new_playlists_path %></p>
+<p><%= link_to 'Add a playlist from Spotify', add_spotify_playlist_path%></p>
+<p><%= link_to 'Go to the community feed', posts_path %></p>
+
 <% if @playlists.size >0 %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Author</th>
-      <th>Your Playlist?</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= render 'playlists_render'%>
 
-  <tbody>
-    <% @playlists.each do |playlist| %>
-      <tr>
-        <td><%= link_to playlist.name, playlist %></td>
-        <td><%= playlist.description %></td>
-        <td><%= playlist.original_author_dj_name %></td>
-        <% if playlist.original_author == current_user %>
-        <td>This is your playlist.</td>
-        <% else %>
-        <td><%= link_to 'Unfollow this Playlist', destroy_follow_path(:pid => playlist.id), method: :delete %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 <% else %>
   <h3>You're not following any playlists! Find a playlist, create one, or hit up the feed to see what's being shared!</h3>
 
 <% end %>
 <br>
-
-<p><%= link_to 'New Playlist', new_playlist_path %></p>
-<p><%= link_to 'Find a new playlist', find_new_playlists_path %></p>
-<p><%= link_to 'Add a playlist from Spotify', add_spotify_playlist_path%></p>
-<p><%= link_to 'Go to the community feed', posts_path %></p>
