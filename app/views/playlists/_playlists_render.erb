@@ -9,7 +9,7 @@
     <h6 class="card-subtitle mb-2 "> <%= playlist.original_author_dj_name %></h6>
     <p class="card-text"><%= playlist.description %></p>
     <% if playlist.original_author == current_user %>
-    <div class= "your_playlist">This is your playlist.</div>
+    <div class= "your_playlist">This is your playlist</div>
     <% elsif playlist.does_user_follow?(current_user) %>
     <form action="<%= destroy_follow_path(:pid => playlist.id) %>" method="post">
     <input name="_method" type="hidden" value="delete" />

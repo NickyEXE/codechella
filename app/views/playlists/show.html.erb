@@ -1,6 +1,6 @@
-<p>
+<div class="container">
+
   <h1><%= @playlist.name %></h1>
-</p>
 
 <p>
   <strong>Description:</strong>
@@ -30,9 +30,9 @@
 
 
 <% if @songs.length > 0 %>
-
+<div class="container">
+<div class="transparent">
 <h2>Songs</h2>
-
 <table>
   <thead>
     <tr>
@@ -63,3 +63,6 @@
 <h2>This playlist has no songs on it. </h2>
 
 <% end %>
+</div>
+</div>
+</div>
