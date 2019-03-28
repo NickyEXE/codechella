@@ -1,15 +1,16 @@
+<link href="signin.css" rel="stylesheet">
+
 <h1>Signup!</h1>
 
 <%# <%= render 'form', user: @user %>
 
 <%# <%= link_to 'Back', users_path %>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, :html => {:class => "form-signin"} do |f| %>
 <%= f.label :dj_name %>
 <%= f.text_field :dj_name %>
 <%= f.label :password %>
 <%= f.text_field :password %>
 <%= f.submit %>
 <% end %>
-
 <p>Already have an account? <%= link_to "Sign in", login_path %></p>

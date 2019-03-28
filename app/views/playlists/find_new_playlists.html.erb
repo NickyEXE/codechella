@@ -2,34 +2,8 @@
 
 <h1>Playlists</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Author</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @playlists.each do |playlist| %>
-      <tr>
-        <td><%= link_to playlist.name, playlist %></td>
-        <td><%= playlist.description %></td>
-        <td><%= playlist.original_author_dj_name %></td>
-        <% if playlist.original_author == current_user %>
-        <td>This is your playlist.</td>
-        <% elsif playlist.does_user_follow?(current_user) %>
-        <td><%= link_to 'Unfollow this Playlist', destroy_follow_path(:pid => playlist.id), method: :delete %></td>
-        <% else %>
-        <td><%= link_to 'Follow this Playlist', new_follow_path(:pid => playlist.id), method: :post %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= link_to 'New Playlist', new_playlist_path %>
+<br>
+<%= render 'playlists_render'%>
 
 <br>
-
-<%= link_to 'New Playlist', new_playlist_path %>
