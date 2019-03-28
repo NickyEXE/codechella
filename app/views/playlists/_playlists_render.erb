@@ -11,7 +11,11 @@
     <% if playlist.original_author == current_user %>
     <div class= "your_playlist">This is your playlist.</div>
     <% elsif playlist.does_user_follow?(current_user) %>
-    <a href="<%= new_follow_path(:pid => playlist.id) %>" class="btn btn-primary">Unfollow this Playlist</a>
+    <form action="<%= destroy_follow_path(:pid => playlist.id) %>" method="post">
+    <input name="_method" type="hidden" value="delete" />
+     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <button class="btn btn-primary" type="submit">Unfollow this Playlist</button>
+    </form>
     <% else %>
     <form action="<%= new_follow_path(:pid => playlist.id) %>" method="post">
      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
