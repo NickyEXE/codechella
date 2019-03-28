@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+
   </head>
 
   <body><center>
@@ -45,10 +45,10 @@
     </ul>
 
       <!-- Dropdown -->
-      
+
       <nav class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false" style="color:rgba(255,255,255,.5);">My Account</a>
+          aria-expanded="false" style="color:rgba(255,255,255,.5);"><%= current_user.dj_name %></a>
         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
           <%= link_to 'Settings', edit_user_path(current_user), :class => "dropdown-item" %>
           <%= link_to "Logout", logout_path, method: 'delete', :class => "dropdown-item" %>
@@ -60,13 +60,7 @@
 </nav>
 <% end %>
 
-    <% if current_user %>
-    <p>You are logged in as: <%= current_user.dj_name %></p>
-      <p><%= link_to "See the newsfeed", posts_path %><br></p>
-      <p><%= link_to "Your playlists", playlists_path %><br></p>
-      <p><%= link_to "Logout", logout_path, method: 'delete' %></p>
-    ----------------------------------------
-    <% end %>
+
     <%= yield %>
   </center>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
