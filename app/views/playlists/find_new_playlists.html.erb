@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Playlists</h1>
+<h1 style="color: white">Playlists</h1>
 
-<%= link_to 'New Playlist', new_playlist_path %>
+<%= button_to 'New Playlist', new_playlist_path, :method => 'get', :class => "btn btn-secondary btn-lg" %>
 <br>
 <%= render 'playlists_render'%>
 

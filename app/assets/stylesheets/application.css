@@ -15,6 +15,16 @@
  */
 
  /* unvisited link */
+
+body {
+    background-image: url(background.jpg);
+    background-size: cover;
+}
+
+a {
+    color: white;
+}
+
  .card-body a:link {
    color: #ffc107 ;
  }
