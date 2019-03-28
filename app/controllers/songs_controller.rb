@@ -22,7 +22,6 @@ class SongsController < ApplicationController
   # POST /songs.json
 
   def create
-<<<<<<< HEAD
     @playlist = Playlist.find(flash[:playlist_id])
     song = Song.find_or_create_song(artist: song_params[:artist], name: song_params[:name], playlist: @playlist)
     if song.class == Song
@@ -31,14 +30,6 @@ class SongsController < ApplicationController
       flash[:playlist_id] = flash[:playlist_id]
       flash[:error] = "#{song_params[:name]} by #{song_params[:artist]} was not found on spotify"
       send_back_to_new_song
-=======
-
-    @song = Playlist.find(flash[:playlist_id]).songs.create(song_params)
-    if @song.valid?
-      redirect_to Playlist.find(flash[:playlist_id])
-    else
-      redirect_to new_song_path(playlist_id: flash[:playlist_id])
->>>>>>> master
     end
   end
   # def create
