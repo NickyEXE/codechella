@@ -1,5 +1,7 @@
-<br><br>
-
+<div class="container">
+  <%= link_to "Create a new post!", new_post_path %>
+<br>
+<br>
 <% if @errors %>
   <% @errors.each do |error| %>
     Error: <%= error %><br>
@@ -11,30 +13,42 @@
 <% if @posts %>
   <% @posts.each do |post| %>
     <% if post.playlist %>
-      <strong><%= @users.find(post.user_id).dj_name %></strong> shared <%= link_to post.playlist.name, post.playlist %>
-      <h3><%= post.title %></h3>
-      <%= post.description %><br><br>
-      <% if post.comments.size > 0 %>
-        <strong>Comments:</strong><br>
-        <% post.comments.order(:created_at).each do |comment|%>
-          <%= comment.user.dj_name%> wrote: <br>
-          <%= comment.comment_text %>
-          <br><br>
+    <div class="card text-white bg-dark border-warning post" style="width: 40rem;">
+      <div class="card-body text-white">
+        <h6 class="card-subtitle mb-2 "><%= @users.find(post.user_id).dj_name %> shared <%= link_to post.playlist.name, post.playlist %></h6>
+        <h5 class="card-title"><%= post.title %></h5>
+        <p class="card-text"><%= post.description %></p><br><br>
+        <% if post.comments.size > 0 %>
+        <p class="card-text"><strong>Comments:</strong></p>
+          <ul class="list-group list-group-flush">
+          <% post.comments.order(:created_at).each do |comment|%>
+            <div class="text-white bg-danger comment center" style="width: 36rem;">
+            <li class="list-group-item bg-danger comment center"><strong><%= comment.user.dj_name%></strong> wrote: <%= comment.comment_text %><br><i>(at <%= comment.created_at %>)</i></li>
+            </div>
+          <% end %>
+          </ul>
         <% end %>
-      <% end %>
-      <%= form_for @comment do |f| %>
-        <%= f.text_area :comment_text, placeholder: "Post a Comment" %><br>
-        <%= f.hidden_field 'post_id', value: post.id %>
-        <%= f.submit %>
-      <% end %>
-      <% if post.user_id == current_user.id %>
-        <%= link_to "Edit your post", edit_post_path(post) %> -
-        <%= link_to "Delete your post", post, :method => :delete, :confirm => "Sure you want to delete your content?" %><br>
-      <% end %>
+        <br>
+        <form class="new_comment" id="new_comment" action="/comments" accept-charset="UTF-8" method="post">
+          <%= token_tag %>
+          <input name="utf8" type="hidden" value="✓">
+          <input value="<%= post.id %>" type="hidden" name="comment[post_id]" id="comment_post_id">
+          <input type="hidden"
+           value="<%= form_authenticity_token() %>"
+           name="authenticity_token"/>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <input class="btn btn-outline-secondary bg-danger text-white" type="submit" value="Post a Comment">
+          </div>
+          <textarea class="form-control" aria-label="Post a Comment" name="comment[comment_text]" id="comment_comment_text"></textarea>
+        </div>
+        </form>
+        </div>
+      </div>
       -------------------------<br>
     <% end %>
   <% end %>
 <% else %>
   <h2>There are no posts in this community! Be the first!</h2>
 <% end %>
-<%= link_to "Create a new post!", new_post_path %>
+</div>
