@@ -1,4 +1,6 @@
-
+<% if @error %>
+  <%= @error %><br>
+<% end %>
 <%= form_for @song do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %><br><br>
