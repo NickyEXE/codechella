@@ -2,4 +2,15 @@
 
 <%= render 'form', song: @song %>
 
+<br>
+<h3>Top Songs</h3>
+<div class="transparent">
+<% i = 0 %>
+<% @song_arrays.each do |song_array| %>
+  <% i +=1 %>
+  <%= "#{i} -- #{song_array[0]} -- #{song_array[1]} (Number of playlists: #{song_array[2]})" %>
+  <br>
+<% end %>
+</div>
+
 <%= link_to 'Back', playlist_path(flash[:playlist_id]) %>

@@ -9,6 +9,7 @@ class SongsController < ApplicationController
   # GET /songs/new
   def new
     @song = Song.new
+    @song_arrays = Song.top_x_songs(5)
     @error = flash[:error]
     flash[:playlist_id] = params[:pid]
     # byebug

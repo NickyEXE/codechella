@@ -51,6 +51,19 @@ class Song < ApplicationRecord
     end
   end
 
+
+  def self.sort_by_popularity
+    self.all.sort_by do |song|
+      song.playlists.length
+    end.reverse
+  end
+
+  def self.top_x_songs(x)
+    songs = Song.sort_by_popularity[0..9]
+    songs.map do |song|
+      [song.name, song.artist, song.playlists.length]
+    end
+  end
   #Spotify API Stuff
 
 
