@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     if !!current_user
       redirect_to playlists_path
     else
+      @errors = flash[:errors]
       @user = User.new
       render :new
     end
@@ -29,8 +30,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    session[:user_id] = @user.id
-    redirect_to :controller => "playlists", :action => "index"
+    if @user.valid?
+      session[:user_id] = @user.id
+      redirect_to :controller => "playlists", :action => "index"
+    else
+      flash[:errors] = @user.errors.full_messages
+      redirect_to new_user_path
+    end
   end
 
   def update

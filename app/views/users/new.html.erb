@@ -2,9 +2,15 @@
 
 <div class="transparent login-container">
 
-<img src="<%=image_url('logo.png')%>"> 
+<img src="<%=image_url('logo.png')%>">
 
 <h1>Signup!</h1><br>
+
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>
 
 <%# <%= render 'form', user: @user %>
 
