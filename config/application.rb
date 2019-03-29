@@ -7,7 +7,10 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-# Dotenv::Railtie.load
+
+if defined? (Dotenv)
+  Dotenv::Railtie.load
+end
 
 RSpotify.authenticate(ENV["SPOTIFY_CLIENT_ID"], ENV["SPOTIFY_CLIENT_SECRET"])
 module Codechella

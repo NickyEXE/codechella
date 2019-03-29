@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :follows, dependent: :destroy
   has_many :playlists, through: :follows
   has_many :comments, dependent: :destroy
+  validates :dj_name, uniqueness: true
   has_secure_password
 
   def songs
