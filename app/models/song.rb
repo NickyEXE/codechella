@@ -59,7 +59,7 @@ class Song < ApplicationRecord
   end
 
   def self.top_x_songs(x)
-    songs = Song.sort_by_popularity[0..9]
+    songs = Song.sort_by_popularity[0..x]
     songs.map do |song|
       [song.name, song.artist, song.playlists.length]
     end

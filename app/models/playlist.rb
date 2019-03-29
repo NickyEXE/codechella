@@ -31,6 +31,18 @@ class Playlist < ApplicationRecord
     end
   end
 
+  def sort_by_popularity
+    self.all.sort_by |playlist|
+      playlist.follows.length
+    end.reverse
+  end
+
+  def top_x_playlists(x)
+    self.sort_by_popularity[0..x].map do |playlist|
+      [playlist.name, playlist.original_author_dj_name, playlist.follows.length]
+    end
+  end
+
   # def image
   #   song = self.song_for_image
   #   if song
