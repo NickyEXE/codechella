@@ -8,6 +8,7 @@
     <h5 class="card-title playlist_name "><%= link_to playlist.name, playlist %></h5>
     <h6 class="card-subtitle mb-2 "> <%= playlist.original_author_dj_name %></h6>
     <p class="card-text"><%= playlist.description %></p>
+    <p class="card-text">Number of Follows: <%= playlist.follows.length %></p>
     <% if playlist.original_author == current_user %>
     <div class= "your_playlist">This is your playlist</div>
     <% elsif playlist.does_user_follow?(current_user) %>

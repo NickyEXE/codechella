@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<h1 style="color: white">Most Popular Playlists</h1>
+
+<%= button_to 'New Playlist', new_playlist_path, :method => 'get', :class => "btn btn-secondary btn-lg" %>
+<br>
+<%= render 'playlists_render'%>
+
+<br>

@@ -31,8 +31,8 @@ class Playlist < ApplicationRecord
     end
   end
 
-  def sort_by_popularity
-    self.all.sort_by |playlist|
+  def self.sort_by_popularity
+    self.all.sort_by do |playlist|
       playlist.follows.length
     end.reverse
   end
@@ -42,6 +42,7 @@ class Playlist < ApplicationRecord
       [playlist.name, playlist.original_author_dj_name, playlist.follows.length]
     end
   end
+end
 
   # def image
   #   song = self.song_for_image
@@ -51,5 +52,3 @@ class Playlist < ApplicationRecord
   #     image_url('logo.png')
   #   end
   # end
-
-end

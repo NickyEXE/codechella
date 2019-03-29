@@ -10,6 +10,12 @@ class PlaylistsController < ApplicationController
     render :find_new_playlists
   end
 
+  def find_popular_playlists
+    @playlists = Playlist.all.sort_by_popularity[0..14]
+    render :most_popular_playlists
+  end
+
+
   def new_spotify_playlist
     @error = flash[:error]
     render :spotify_new
