@@ -28,8 +28,19 @@ body {
     color: white;
 }
 
-a {
-    color: white;
+
+
+a:link{
+    color: #ffc107;
+}
+
+a:visited{
+    color: #ffc107;
+}
+
+
+a:hover {
+  color: hotpink;
 }
 
  .card-body a:link {

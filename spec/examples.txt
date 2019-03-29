@@ -1,8 +1,8 @@
 example_id                                                         | status | run_time        |
 ------------------------------------------------------------------ | ------ | --------------- |
-./spec/features/user_can_follow_and_unfollow_playlist_spec.rb[1:1] | passed | 0.08901 seconds |
-./spec/features/user_can_follow_and_unfollow_playlist_spec.rb[1:2] | passed | 0.12623 seconds |
-./spec/features/user_creates_ a_playlist_spec.rb[1:1]              | passed | 0.15076 seconds |
-./spec/features/visitor_creates_account_spec.rb[1:1]               | passed | 0.03313 seconds |
-./spec/features/visitor_logs_in_spec.rb[1:1]                       | passed | 1.46 seconds    |
-./spec/features/visitor_logs_in_spec.rb[1:2]                       | passed | 3.92 seconds    |
+./spec/features/user_can_follow_and_unfollow_playlist_spec.rb[1:1] | failed | 0.01931 seconds |
+./spec/features/user_can_follow_and_unfollow_playlist_spec.rb[1:2] | failed | 0.01966 seconds |
+./spec/features/user_creates_ a_playlist_spec.rb[1:1]              | passed | 0.11641 seconds |
+./spec/features/visitor_creates_account_spec.rb[1:1]               | passed | 0.85452 seconds |
+./spec/features/visitor_logs_in_spec.rb[1:1]                       | passed | 0.03664 seconds |
+./spec/features/visitor_logs_in_spec.rb[1:2]                       | passed | 0.03638 seconds |
